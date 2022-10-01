@@ -1,0 +1,76 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
+@import url(css/utilities.scss);
+
+.App {
+  text-align: center;
+  height: 100vh;
+  .navbar {
+    height: 70px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      font-size: 25px;
+    }
+    .cart,
+    .logo {
+      margin: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    i {
+      font-size: 35px;
+    }
+  }
+  .main {
+    display: flex;
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding-top: 15px;
+      width: 250px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+
+      .searchbar {
+        input {
+          height: 40px;
+          border-radius: 20px;
+          text-align: center;
+        }
+      }
+      .categories {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 20px;
+
+        a:hover {
+          border-bottom: 2px solid var(--primary-color);
+        }
+      }
+    }
+    .list {
+      width: 1500px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding-top: 20px;
+      .card {
+        width: 300px;
+        height: 370px;
+        box-shadow: 1px 1px 7px gray;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
