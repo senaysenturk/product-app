@@ -5,15 +5,8 @@ import ProductList from "./components/product-list/ProductList";
 import { useState } from "react";
 
 function App() {
-  const [categories, setCategories] = useState([
-    "Woman",
-    "Man",
-    "Child",
-    "Home",
-    "Electronic",
-  ]);
-
-  const [productList, setProductList] = useState([
+  const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
+  const products = [
     {
       id: Math.ceil(Math.random() * 1000),
       name: `Product 1`,
@@ -84,32 +77,42 @@ function App() {
       img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
       price: "100",
     },
-  ]);
+  ];
 
-  // setProductList(prevList => [{
-  //   id: Math.ceil(Math.random() * 1000),
-  //   name: `Product 1`,
-  //   category: `Woman`,
-  //   img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-  //   price: "100",
-  // }]);
+  const [productList, setProductList] = useState([]);
+  const [cartCount, setCardCount] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchedProduct, setSearchedProduct] = useState("");
+  // setProductList(prevList => [...prevList, products]);
 
-  const getCategoryProducts = (category) => {
-    setProductList((prevProductList) =>
-      prevProductList.filter((prd) => prd.category == category)
-    );
-  };
-
-  const handleSetProduct = (value) => setProductList(prevProduct => ({...prevProduct, ...value}));
-
+  const addCart = () => setCardCount((prevCount) => prevCount + 1);
 
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Navbar cartCount={cartCount}></Navbar>
       <div className="main">
-        <Sidebar categories={categories} getCategoryProducts={getCategoryProducts}></Sidebar>
+        <Sidebar
+          categories={categories}
+          setSelectedCategory={setSelectedCategory}
+          setSearchedProduct={setSearchedProduct}
+        ></Sidebar>
 
-        <ProductList productList={productList} handleSetProduct={handleSetProduct}></ProductList>
+        <ProductList
+          productList={productList}
+          products={products.filter((product) => {
+            if ((selectedCategory === "" && searchedProduct === "") || selectedCategory === "All") {
+              console.log("")
+              return true;
+            } else if (searchedProduct) {
+              console.log(searchedProduct);
+              return product.name.toLowerCase().includes(searchedProduct);
+            } else {
+              console.log(selectedCategory);
+              return product.category == selectedCategory;
+            }
+          })}
+          addCart={addCart}
+        ></ProductList>
       </div>
     </div>
   );

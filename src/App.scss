@@ -3,7 +3,6 @@
 
 .App {
   text-align: center;
-  height: 100vh;
   .navbar {
     height: 70px;
     width: 100%;
@@ -15,26 +14,50 @@
     .logo {
       font-size: 25px;
     }
-    .cart,
-    .logo {
+    .cart-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .cart{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-direction: column;
+    }
+    .logo,
+    .cart-items {
       margin: 0 20px;
       display: flex;
       align-items: center;
       gap: 10px;
+      cursor: pointer;
     }
     i {
-      font-size: 35px;
+      font-size: 25px;
+    }
+    .cart-count {
+      background-color: var(--text-color);
+      color: var(--primary-color);
+      border-radius: 50px;
+      width: 17px;
+      height: 17px;
+      font-size: 12px;
+      margin-left: 5px;
     }
   }
   .main {
     display: flex;
+    height: calc(100vh - 70px);
     .sidebar {
       display: flex;
       flex-direction: column;
       padding-top: 15px;
       width: 250px;
       border: 1px solid rgba(0, 0, 0, 0.1);
-
       .searchbar {
         input {
           height: 40px;
@@ -45,31 +68,67 @@
       .categories {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         padding-top: 20px;
-
+        font-weight: 500;
         a:hover {
           border-bottom: 2px solid var(--primary-color);
         }
       }
     }
-    .list {
+    .container {
       width: 1500px;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      padding-top: 10px;
       gap: 20px;
-      padding-top: 20px;
-      .card {
-        width: 300px;
-        height: 370px;
-        box-shadow: 1px 1px 7px gray;
-        border-radius: 10px;
+      .breadcrumb {
+        display: flex;        
+        padding: 10px 16px;
+        list-style: none;
+        li {
+          display: inline;
+          font-size: 18px;
+          a {
+            color: var(--outline-color);
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+        li + li:before {
+          padding: 8px;
+          color: var(--secondary-color);
+          content: ">\00a0";
+        }
+      }
+      .list {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
+        gap: 20px;
+        .card {
+          width: 220px;
+          height: 270px;
+          box-shadow: 1px 1px 7px gray;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          &:hover {
+            transform: scale(1.05);
+          }
+          .add-cart {
+            margin-top: 25px;
+            color: var(--outline-color);
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
