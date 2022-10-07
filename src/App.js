@@ -84,12 +84,33 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchedProduct, setSearchedProduct] = useState("");
   // setProductList(prevList => [...prevList, products]);
+  const [showCart, setShowCart] = useState(false);
+  const [cartList, setCartList] = useState([]);
+  const [productCount, setProductCount] = useState(1);
+  const [clickCount, setClickCount] = useState(0);
 
   const addCart = () => setCardCount((prevCount) => prevCount + 1);
+  const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
+  const decreaseCount = () => setProductCount((prevCount) => prevCount + 1);
+  
+  const handleCartClick = () => {
+    setClickCount((prevCount) => prevCount + 1)
+    if (clickCount % 2 === 0) setShowCart(true);
+    else setShowCart(false);
+  };
 
+  
   return (
     <div className="App">
-      <Navbar cartCount={cartCount}></Navbar>
+      <Navbar
+        cartCount={cartCount}
+        productList={productList}
+        handleCartClick={handleCartClick}
+        showCart={showCart}
+        increaseCount={increaseCount}
+        decreaseCount={decreaseCount}
+        productCount={productCount}
+      ></Navbar>
       <div className="main">
         <Sidebar
           categories={categories}
@@ -98,16 +119,18 @@ function App() {
         ></Sidebar>
 
         <ProductList
-          productList={productList}
           products={products.filter((product) => {
-            if ((selectedCategory === "" && searchedProduct === "") || selectedCategory === "All") {
-              console.log("")
+            if (
+              (selectedCategory === "" && searchedProduct === "") ||
+              selectedCategory === "All"
+            ) {
+              // console.log("");
               return true;
             } else if (searchedProduct) {
-              console.log(searchedProduct);
+              // console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
             } else {
-              console.log(selectedCategory);
+              // console.log(selectedCategory);
               return product.category == selectedCategory;
             }
           })}
