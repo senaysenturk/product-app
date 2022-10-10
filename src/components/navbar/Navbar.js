@@ -9,8 +9,11 @@ const Navbar = ({
   increaseCount,
   decreaseCount,
   productCount,
+  cartList
 }) => {
+  
   return (
+    
     <div className="navbar">
       <div className="logo">
         <i className="fa-brands fa-neos"></i>
@@ -27,7 +30,8 @@ const Navbar = ({
       </div>
       {showCart && <Cart increaseCount={increaseCount}
         decreaseCount={decreaseCount}
-        productCount={productCount}></Cart>}
+        productCount={productCount}
+        cartList={cartList}></Cart>}
     </div>
   );
 };

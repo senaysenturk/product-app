@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProductList = ({ products, addCart }) => {
-  console.log(products);
   return (
     <div className="container">
       <div className="breadcrumb">
@@ -17,12 +16,26 @@ const ProductList = ({ products, addCart }) => {
       <div className="list">
         {products.map((product, index) => (
           <div className="card" key={index}>
-            <img src={product.img} width="100" alt="" />
-            <h2>{product.name}</h2>
-            <h3>{product.price}$</h3>
-            <a className="add-cart" onClick={addCart}>
-              Add to Cart
-            </a>
+            <div className="card-info">
+              <img src={product.img} width="42%" alt="" />
+              <h3>{product.name}</h3>
+              <h4>{product.price} TRY</h4>
+            </div>
+
+            <div className="add-cart">
+              <a
+                className="add-cart-item"
+                onClick={(e) =>
+                  addCart({
+                    img: product.img,
+                    name: product.name,
+                    price: product.price,
+                  })
+                }
+              >
+                Add to Cart
+              </a>
+            </div>
           </div>
         ))}
       </div>

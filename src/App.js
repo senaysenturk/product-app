@@ -9,72 +9,72 @@ function App() {
   const products = [
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 1`,
+      name: `Black Boot`,
       category: `Woman`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com/ty428/product/media/images/20220510/12/108805493/321184391/1/1_org_thumb.jpg",
+      price: "999",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 2`,
+      name: `Coat`,
       category: `Man`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com//ty533/product/media/images/20220914/11/175119345/569068745/1/1_org.jpg",
+      price: "4.400",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 3`,
+      name: `Wall Clock`,
       category: `Home`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com/mnresize/-/-//ty132/product/media/images/20210623/12/103292226/192054828/1/1_org_thumb.jpg",
+      price: "99,99",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 4`,
+      name: `Phone`,
       category: `Electronic`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com//ty537/product/media/images/20220920/21/177585013/574173122/2/2_org.jpg",
+      price: "57.000",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 5`,
+      name: `Toy`,
       category: `Child`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com/mnresize/-/-//ty95/product/media/images/20210404/14/4566e55a/58777902/1/1_org_thumb.jpg",
+      price: "",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 6`,
+      name: `Handbag`,
       category: `Woman`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com//ty532/product/media/images/20220913/6/174726639/568518706/1/1_org.jpg",
+      price: "999",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 7`,
+      name: `Boot`,
       category: `Man`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
+      img: "https://cdn.dsmcdn.com//ty557/product/media/images/20221008/4/188982235/20026157/1/1_org.jpg",
       price: "100",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 8`,
+      name: `Bathroom Set`,
       category: `Home`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
+      img: "https://cdn.dsmcdn.com/mnresize/-/-//ty519/product/media/images/20220901/15/168085259/488319748/1/1_org_thumb.jpg",
       price: "100",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 9`,
+      name: `Wireless Headphone`,
       category: `Electronic`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
-      price: "100",
+      img: "https://cdn.dsmcdn.com//ty173/product/media/images/20210907/12/127164305/238498852/1/1_org.jpg",
+      price: "5.199,90",
     },
     {
       id: Math.ceil(Math.random() * 1000),
-      name: `Product 10`,
+      name: `Toy`,
       category: `Child`,
-      img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353",
+      img: "https://cdn.dsmcdn.com//ty324/product/media/images/20220206/12/45778858/158711644/1/1_org.jpg",
       price: "100",
     },
   ];
@@ -89,17 +89,19 @@ function App() {
   const [productCount, setProductCount] = useState(1);
   const [clickCount, setClickCount] = useState(0);
 
-  const addCart = () => setCardCount((prevCount) => prevCount + 1);
+  const addCart = (value) => {
+    setCardCount((prevCount) => prevCount + 1);
+    setCartList((prevCartList) => [...prevCartList, value]);
+  };
   const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
-  const decreaseCount = () => setProductCount((prevCount) => prevCount + 1);
-  
+  const decreaseCount = () => setProductCount((prevCount) => prevCount - 1);
+
   const handleCartClick = () => {
-    setClickCount((prevCount) => prevCount + 1)
+    setClickCount((prevCount) => prevCount + 1);
     if (clickCount % 2 === 0) setShowCart(true);
     else setShowCart(false);
   };
 
-  
   return (
     <div className="App">
       <Navbar
@@ -110,6 +112,7 @@ function App() {
         increaseCount={increaseCount}
         decreaseCount={decreaseCount}
         productCount={productCount}
+        cartList={cartList}
       ></Navbar>
       <div className="main">
         <Sidebar
@@ -120,17 +123,15 @@ function App() {
 
         <ProductList
           products={products.filter((product) => {
-            if (
-              (selectedCategory === "" && searchedProduct === "") ||
-              selectedCategory === "All"
-            ) {
-              // console.log("");
+            if (selectedCategory == "" && searchedProduct == "") {
+              console.log("");
               return true;
-            } else if (searchedProduct) {
-              // console.log(searchedProduct);
+            } else if (("searchedProduct:", searchedProduct)) {
+              console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
+            } else if (selectedCategory == "All") {
+              return true;
             } else {
-              // console.log(selectedCategory);
               return product.category == selectedCategory;
             }
           })}

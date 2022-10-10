@@ -1,26 +1,40 @@
 import React from "react";
 
-const Cart = ({increaseCount,
-  decreaseCount,
-  productCount}) => {
+const Cart = ({ increaseCount, decreaseCount, productCount, cartList }) => {
   return (
     <div className="cart-list">
-      <div className="product">
-        <img
-          src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MX472_AV4?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1570119352353"
-          height="50px"
+      <div className="products"> 
+        {
+        cartList.length>0 && (cartList.map((product, index) => (
+        <div className="product" key={index}>
+        <img className="product-img"
+          src={product.img}
+          height="80px"
           alt=""
         />
-        <div className="card-info">
-          <p>Product Name</p>
-          <p>Price</p>
+        <div className="cart-info">
+          <p>{product.name}</p>
+          <p>{product.price} TRY</p>
           <div className="counter">
-            <input type="button" value="-" onClick={decreaseCount}/>
-            <input type="text" value={productCount}/>
-            <input type="button" value="+" onClick={increaseCount}/>
+            <input type="button" defaultValue="-" onClick={decreaseCount} />
+            <input type="text" defaultValue={productCount} />
+            <input type="button" defaultValue="+" onClick={increaseCount} />
           </div>
-        </div>
+        </div>       
       </div>
+        )))}
+      </div>
+      <div className="order-cost">
+        <h3>Order Summary </h3>
+        <p>
+          Items: TRY{" "}
+          {(productCount * 100).toLocaleString("tr-TR", {
+            minimumFractionDigits: 2,
+          })}
+        </p>
+        <p>Shipping & handling: TRY 20,00</p>
+      </div>
+    
     </div>
   );
 };
