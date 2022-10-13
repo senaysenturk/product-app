@@ -89,18 +89,29 @@ function App() {
   const [productCount, setProductCount] = useState(1);
   const [clickCount, setClickCount] = useState(0);
 
-const updateCount = (itemId) => {
- cartList.find(item=> item.id === itemId).count += 1;
-};
+  const updateCount = (itemId) => {
+    cartList.find((item) => item.id === itemId).count += 1;
+  };
 
   const addCart = (value) => {
     setCardCount((prevCount) => prevCount + 1);
-    
-    cartList.findIndex((item) => item.id === value.id)<0 ?
-      (setCartList((prevCartList) => [...prevCartList, value])) : updateCount(value.id)
+
+    cartList.findIndex((item) => item.id == value.id) < 0
+      ? setCartList((prevCartList) => [...prevCartList, value])
+      : updateCount(value.id);
   };
-  const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
-  const decreaseCount = () => setProductCount((prevCount) => prevCount - 1);
+
+  const updateCart = (id, value) => {
+    cartList.find((item) => item.id === id).count += value;
+    let newList = [...cartList];
+    setCartList(newList)
+  };
+  const increaseCount = (id) => {
+    updateCart(id, 1);
+  };
+  const decreaseCount = (id) => {
+    updateCart(id, -1);
+  };
 
   const handleCartClick = () => {
     setClickCount((prevCount) => prevCount + 1);
@@ -129,16 +140,16 @@ const updateCount = (itemId) => {
 
         <ProductList
           products={products.filter((product) => {
-            if (selectedCategory === "" && searchedProduct === "") {
+            if (selectedCategory == "" && searchedProduct == "") {
               // console.log("");
               return true;
             } else if (("searchedProduct:", searchedProduct)) {
               // console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
-            } else if (selectedCategory === "All") {
+            } else if (selectedCategory == "All") {
               return true;
             } else {
-              return product.category === selectedCategory;
+              return product.category == selectedCategory;
             }
           })}
           addCart={addCart}
