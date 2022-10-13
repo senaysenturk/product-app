@@ -98,7 +98,7 @@ const updateCount = (itemId) => {
   const addCart = (value) => {
     setCardCount((prevCount) => prevCount + 1);
     
-    cartList.findIndex((item) => item.id == value.id)<0 ?
+    cartList.findIndex((item) => item.id === value.id)<0 ?
       (setCartList((prevCartList) => [...prevCartList, value])) : updateCount(value.id)
   };
   const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
