@@ -4,8 +4,6 @@ import Navbar from "./components/navbar/Navbar";
 import ProductList from "./components/product-list/ProductList";
 import { useState } from "react";
 
-// burası eklendi
-
 function App() {
   const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
   const products = [
@@ -98,7 +96,7 @@ const updateCount = (itemId) => {
   const addCart = (value) => {
     setCardCount((prevCount) => prevCount + 1);
     
-    cartList.findIndex((item) => item.id == value.id)<0 ?
+    cartList.findIndex((item) => item.id === value.id)<0 ?
       (setCartList((prevCartList) => [...prevCartList, value])) : updateCount(value.id)
   };
   const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
@@ -131,16 +129,16 @@ const updateCount = (itemId) => {
 
         <ProductList
           products={products.filter((product) => {
-            if (selectedCategory == "" && searchedProduct == "") {
+            if (selectedCategory === "" && searchedProduct === "") {
               // console.log("");
               return true;
             } else if (("searchedProduct:", searchedProduct)) {
               // console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
-            } else if (selectedCategory == "All") {
+            } else if (selectedCategory === "All") {
               return true;
             } else {
-              return product.category == selectedCategory;
+              return product.category === selectedCategory;
             }
           })}
           addCart={addCart}
