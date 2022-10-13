@@ -6,10 +6,7 @@ const ProductList = ({ products, addCart }) => {
       <div className="breadcrumb">
         <ul>
           <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">All</a>
+            <a href="#"></a>
           </li>
         </ul>
       </div>
@@ -19,7 +16,9 @@ const ProductList = ({ products, addCart }) => {
             <div className="card-info">
               <img src={product.img} width="42%" alt="" />
               <h3>{product.name}</h3>
-              <h4>{product.price} TRY</h4>
+              <h5>{product.price.toLocaleString("tr-TR", {
+            minimumFractionDigits: 2,
+          })} TRY</h5>
             </div>
 
             <div className="add-cart">
@@ -30,6 +29,8 @@ const ProductList = ({ products, addCart }) => {
                     img: product.img,
                     name: product.name,
                     price: product.price,
+                    count:1,
+                    id: product.id
                   })
                 }
               >

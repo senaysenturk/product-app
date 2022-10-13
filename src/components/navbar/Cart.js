@@ -1,12 +1,21 @@
 import React from "react";
 
 const Cart = ({ increaseCount, decreaseCount, productCount, cartList }) => {
+  let totalPrice = 0;
+
+  for (const item of cartList) {
+   totalPrice += parseFloat(item.price)
+  }
+  // console.log(totalPrice)
   return (
     <div className="cart-list">
       <div className="products"> 
         {
+          
         cartList.length>0 && (cartList.map((product, index) => (
+     
         <div className="product" key={index}>
+             <p>{product.id}</p>
         <img className="product-img"
           src={product.img}
           height="80px"
@@ -14,25 +23,29 @@ const Cart = ({ increaseCount, decreaseCount, productCount, cartList }) => {
         />
         <div className="cart-info">
           <p>{product.name}</p>
-          <p>{product.price} TRY</p>
+          <p>{product.price.toLocaleString("tr-TR", {
+            minimumFractionDigits: 2,
+          })} TRY</p>
           <div className="counter">
             <input type="button" defaultValue="-" onClick={decreaseCount} />
-            <input type="text" defaultValue={productCount} />
+            <input type="text" value={product.count}/>
             <input type="button" defaultValue="+" onClick={increaseCount} />
           </div>
         </div>       
       </div>
-        )))}
+      
+        )))
+        }
+        
       </div>
       <div className="order-cost">
         <h3>Order Summary </h3>
         <p>
-          Items: TRY{" "}
-          {(productCount * 100).toLocaleString("tr-TR", {
+          Order Total: {(totalPrice*productCount).toLocaleString("tr-TR", {
             minimumFractionDigits: 2,
-          })}
+          })}TRY
         </p>
-        <p>Shipping & handling: TRY 20,00</p>
+        
       </div>
     
     </div>

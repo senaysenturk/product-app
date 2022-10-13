@@ -8,74 +8,74 @@ function App() {
   const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
   const products = [
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 1,
       name: `Black Boot`,
       category: `Woman`,
       img: "https://cdn.dsmcdn.com/ty428/product/media/images/20220510/12/108805493/321184391/1/1_org_thumb.jpg",
-      price: "999",
+      price: 999,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 2,
       name: `Coat`,
       category: `Man`,
       img: "https://cdn.dsmcdn.com//ty533/product/media/images/20220914/11/175119345/569068745/1/1_org.jpg",
-      price: "4.400",
+      price: 4400,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 3,
       name: `Wall Clock`,
       category: `Home`,
       img: "https://cdn.dsmcdn.com/mnresize/-/-//ty132/product/media/images/20210623/12/103292226/192054828/1/1_org_thumb.jpg",
-      price: "99,99",
+      price: 99.99,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 4,
       name: `Phone`,
       category: `Electronic`,
       img: "https://cdn.dsmcdn.com//ty537/product/media/images/20220920/21/177585013/574173122/2/2_org.jpg",
-      price: "57.000",
+      price: 57000,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
-      name: `Toy`,
+      id: 5,
+      name: `Tedy Bear`,
       category: `Child`,
       img: "https://cdn.dsmcdn.com/mnresize/-/-//ty95/product/media/images/20210404/14/4566e55a/58777902/1/1_org_thumb.jpg",
-      price: "",
+      price: 100,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 6,
       name: `Handbag`,
       category: `Woman`,
       img: "https://cdn.dsmcdn.com//ty532/product/media/images/20220913/6/174726639/568518706/1/1_org.jpg",
-      price: "999",
+      price: 999,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 7,
       name: `Boot`,
       category: `Man`,
       img: "https://cdn.dsmcdn.com//ty557/product/media/images/20221008/4/188982235/20026157/1/1_org.jpg",
-      price: "100",
+      price: 100,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 8,
       name: `Bathroom Set`,
       category: `Home`,
       img: "https://cdn.dsmcdn.com/mnresize/-/-//ty519/product/media/images/20220901/15/168085259/488319748/1/1_org_thumb.jpg",
-      price: "100",
+      price: 100,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 9,
       name: `Wireless Headphone`,
       category: `Electronic`,
       img: "https://cdn.dsmcdn.com//ty173/product/media/images/20210907/12/127164305/238498852/1/1_org.jpg",
-      price: "5.199,90",
+      price: 5199.9,
     },
     {
-      id: Math.ceil(Math.random() * 1000),
+      id: 10,
       name: `Toy`,
       category: `Child`,
       img: "https://cdn.dsmcdn.com//ty324/product/media/images/20220206/12/45778858/158711644/1/1_org.jpg",
-      price: "100",
+      price: 100,
     },
   ];
 
@@ -89,9 +89,15 @@ function App() {
   const [productCount, setProductCount] = useState(1);
   const [clickCount, setClickCount] = useState(0);
 
+const updateCount = (itemId) => {
+ cartList.find(item=> item.id === itemId).count += 1;
+};
+
   const addCart = (value) => {
     setCardCount((prevCount) => prevCount + 1);
-    setCartList((prevCartList) => [...prevCartList, value]);
+    
+    cartList.findIndex((item) => item.id == value.id)<0 ?
+      (setCartList((prevCartList) => [...prevCartList, value])) : updateCount(value.id)
   };
   const increaseCount = () => setProductCount((prevCount) => prevCount + 1);
   const decreaseCount = () => setProductCount((prevCount) => prevCount - 1);
@@ -124,10 +130,10 @@ function App() {
         <ProductList
           products={products.filter((product) => {
             if (selectedCategory == "" && searchedProduct == "") {
-              console.log("");
+              // console.log("");
               return true;
             } else if (("searchedProduct:", searchedProduct)) {
-              console.log(searchedProduct);
+              // console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
             } else if (selectedCategory == "All") {
               return true;
