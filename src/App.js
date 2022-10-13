@@ -4,6 +4,8 @@ import Navbar from "./components/navbar/Navbar";
 import ProductList from "./components/product-list/ProductList";
 import { useState } from "react";
 
+// burası eklendi
+
 function App() {
   const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
   const products = [
