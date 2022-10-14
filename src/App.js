@@ -103,9 +103,10 @@ function App() {
 
   const updateCart = (id, value) => {
     cartList.find((item) => item.id === id).count += value;
-    let newList = [...cartList];
-    setCartList(newList)
+    setCartList([...cartList])
+
   };
+
   const increaseCount = (id) => {
     updateCart(id, 1);
   };
@@ -140,16 +141,16 @@ function App() {
 
         <ProductList
           products={products.filter((product) => {
-            if (selectedCategory == "" && searchedProduct == "") {
+            if (selectedCategory === "" && searchedProduct === "") {
               // console.log("");
               return true;
             } else if (("searchedProduct:", searchedProduct)) {
               // console.log(searchedProduct);
               return product.name.toLowerCase().includes(searchedProduct);
-            } else if (selectedCategory == "All") {
+            } else if (selectedCategory === "All") {
               return true;
             } else {
-              return product.category == selectedCategory;
+              return product.category === selectedCategory;
             }
           })}
           addCart={addCart}

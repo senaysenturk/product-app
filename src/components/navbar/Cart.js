@@ -39,7 +39,7 @@ const Cart = ({ increaseCount, decreaseCount, cartList }) => {
                   <input
                     type="button"
                     defaultValue="+"
-                    onClick={(e) => increaseCount(product.id)}
+                    onClick={(e) => !(increaseCount(product.id))>= 0 ? increaseCount(product.id): 0}
                   />
                 </div>
               </div>
