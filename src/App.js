@@ -112,6 +112,8 @@ function App() {
   };
   const decreaseCount = (id) => {
     updateCart(id, -1);
+
+
   };
 
   const handleCartClick = () => {
@@ -119,6 +121,12 @@ function App() {
     if (clickCount % 2 === 0) setShowCart(true);
     else setShowCart(false);
   };
+
+
+  const deleteOrder = (productId) => { 
+    (productList.splice(productList.findIndex(product=>product.id === productId), 1));
+    setCartList([...cartList])
+  }
 
   return (
     <div className="App">
@@ -131,6 +139,7 @@ function App() {
         decreaseCount={decreaseCount}
         productCount={productCount}
         cartList={cartList}
+        deleteOrder={deleteOrder}
       ></Navbar>
       <div className="main">
         <Sidebar

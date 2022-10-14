@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = ({ increaseCount, decreaseCount, cartList }) => {
+const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder}) => {
   let totalPrice = 0;
   let productCount = 0;
 
@@ -32,14 +32,16 @@ const Cart = ({ increaseCount, decreaseCount, cartList }) => {
                   <input
                     type="button"
                     defaultValue="-"
-                    onClick={(e) => decreaseCount(product.id)}
+                    onClick={(e) =>product.count >1 ? decreaseCount(product.id) : deleteOrder(product.id)
+                    }
                   />
                   {/* <input type="text" value={productCount} /> */}
                   <input type="text" value={product.count} />
                   <input
                     type="button"
                     defaultValue="+"
-                    onClick={(e) => !(increaseCount(product.id))>= 0 ? increaseCount(product.id): 0}
+                    onClick={(e) => {increaseCount(product.id)}
+                    }
                   />
                 </div>
               </div>

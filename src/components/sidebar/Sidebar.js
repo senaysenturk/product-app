@@ -22,5 +22,4 @@ const Sidebar = ({ categories, setSelectedCategory, setSearchedProduct }) => {
     </nav>
   );
 };
-
 export default Sidebar;

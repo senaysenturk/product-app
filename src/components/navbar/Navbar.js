@@ -9,7 +9,9 @@ const Navbar = ({
   increaseCount,
   decreaseCount,
   productCount,
-  cartList
+  cartList,
+  deleteOrder
+
 }) => {
   
   return (
@@ -31,6 +33,7 @@ const Navbar = ({
       {showCart && <Cart increaseCount={increaseCount}
         decreaseCount={decreaseCount}
         productCount={productCount}
+        deleteOrder={deleteOrder}
         cartList={cartList}></Cart>}
     </div>
   );
