@@ -1,8 +1,7 @@
 import React from "react";
 
-const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder}) => {
+const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder }) => {
   let totalPrice = 0;
-  let productCount = 0;
 
   for (const item of cartList) {
     totalPrice += parseFloat(item.price) * item.count;
@@ -32,7 +31,10 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder}) => {
                   <input
                     type="button"
                     defaultValue="-"
-                    onClick={(e) =>product.count >1 ? decreaseCount(product.id) : deleteOrder(product.id)
+                    onClick={(e) =>
+                      product.count > 1
+                        ? decreaseCount(product.id)
+                        : deleteOrder(product.id)
                     }
                   />
                   {/* <input type="text" value={productCount} /> */}
@@ -40,8 +42,9 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder}) => {
                   <input
                     type="button"
                     defaultValue="+"
-                    onClick={(e) => {increaseCount(product.id)}
-                    }
+                    onClick={(e) => {
+                      increaseCount(product.id);
+                    }}
                   />
                 </div>
               </div>

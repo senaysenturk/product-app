@@ -3,19 +3,15 @@ import Cart from "./Cart";
 
 const Navbar = ({
   cartCount,
-  productList,
   handleCartClick,
   showCart,
   increaseCount,
   decreaseCount,
   productCount,
   cartList,
-  deleteOrder
-
+  deleteOrder,
 }) => {
-  
   return (
-    
     <div className="navbar">
       <div className="logo">
         <i className="fa-brands fa-neos"></i>
@@ -30,11 +26,15 @@ const Navbar = ({
         </a>
         <span>Cart</span>
       </div>
-      {showCart && <Cart increaseCount={increaseCount}
-        decreaseCount={decreaseCount}
-        productCount={productCount}
-        deleteOrder={deleteOrder}
-        cartList={cartList}></Cart>}
+      {showCart && (
+        <Cart
+          increaseCount={increaseCount}
+          decreaseCount={decreaseCount}
+          productCount={productCount}
+          deleteOrder={deleteOrder}
+          cartList={cartList}
+        ></Cart>
+      )}
     </div>
   );
 };
