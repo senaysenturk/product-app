@@ -24,7 +24,9 @@ const Cart = ({ increaseCount, decreaseCount, cartList }) => {
               <div className="cart-info">
                 <p>{product.name}</p>
                 <p>
-                  {product.price}{" "}
+                  {product.price.toLocaleString("tr-TR", {
+                    minimumFractionDigits: 2,
+                  })}{" "}
                   TRY
                 </p>
                 <div className="counter">
