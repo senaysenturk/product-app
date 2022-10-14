@@ -14,7 +14,6 @@ const Cart = ({ increaseCount, decreaseCount, cartList }) => {
         <div className="products">
           {cartList.map((product, index) => (
             <div className="product" key={index}>
-              <p>{product.id}</p>
               <img
                 className="product-img"
                 src={product.img}
