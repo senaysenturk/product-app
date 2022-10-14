@@ -104,6 +104,7 @@ function App() {
   const updateCart = (id, value) => {
     cartList.find((item) => item.id === id).count += value;
     setCartList([...cartList]);
+    setCardCount((prevCount) => (prevCount += value));
   };
 
   const increaseCount = (id) => {
@@ -120,11 +121,13 @@ function App() {
   };
 
   const deleteOrder = (productId) => {
-    productList.splice(
-      productList.findIndex((product) => product.id === productId),
+    //console.log(cartList.findIndex((product) => product.id === productId));
+    cartList.splice(
+      cartList.findIndex((product) => product.id === productId),
       1
     );
     setCartList([...cartList]);
+    setCardCount((prevCount) => (prevCount -1));
   };
 
   return (
