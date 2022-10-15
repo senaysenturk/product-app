@@ -15,10 +15,10 @@ const ProductList = ({ products, addCart }) => {
           <div className="card" key={index}>
             <div className="card-info">
               <img src={product.img} width="42%" alt="" />
-              <h3>{product.name}</h3>
-              <h5>{product.price.toLocaleString("tr-TR", {
+              <h5>{product.name}</h5>
+              <h3>{product.price.toLocaleString("tr-TR", {
             minimumFractionDigits: 2,
-          })} TRY</h5>
+          })} TRY</h3>
             </div>
 
             <div className="add-cart">

@@ -27,24 +27,27 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder }) => {
                 TRY
               </p>
               <div className="counter">
-                <input
-                  type="button"
-                  defaultValue="-"
-                  onClick={(e) =>
-                    product.count > 1
-                      ? decreaseCount(product.id)
-                      : deleteOrder(product.id)
-                  }
-                />
+                {product.count > 1 ? (
+                  <i
+                    class="fa-solid fa-minus count-icon"
+                    onClick={(e) => decreaseCount(product.id)}
+                  ></i>
+                ) : (
+                  <i
+                    class="fa-solid fa-trash count-icon"
+                    onClick={(e) => deleteOrder(product.id)}
+                  ></i>
+                )}
+
                 {/* <input type="text" value={productCount} /> */}
-                <input type="text" value={product.count} />
-                <input
-                  type="button"
-                  defaultValue="+"
+                <input  class="count-icon"type="text" value={product.count} defaultValue="1" />
+
+                <i
+                  class="fa-solid fa-plus count-icon"
                   onClick={(e) => {
                     increaseCount(product.id);
                   }}
-                />
+                ></i>
               </div>
             </div>
           </div>
@@ -71,7 +74,6 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder }) => {
           start to review the following products.
         </p>
       </div>
-      
     </div>
   );
 };
