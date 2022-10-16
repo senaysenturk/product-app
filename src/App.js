@@ -85,14 +85,16 @@ function App() {
   const [searchedProduct, setSearchedProduct] = useState("");
   // setProductList(prevList => [...prevList, products]);
   const [showCart, setShowCart] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [cartList, setCartList] = useState([]);
   const [productCount, setProductCount] = useState(1);
-  const [clickCount, setClickCount] = useState(0);
+  const [clickProfileCount, setClickProfileCount] = useState(1);
+  const [clickCartCount, setClickCartCount] = useState(1);
+  const [clickCount, setClickCount] = useState(1);
 
   const updateCount = (itemId) => {
     cartList.find((item) => item.id === itemId).count += 1;
   };
-
   const addCart = (value) => {
     setCardCount((prevCount) => prevCount + 1);
 
@@ -100,24 +102,36 @@ function App() {
       ? setCartList((prevCartList) => [...prevCartList, value])
       : updateCount(value.id);
   };
-
   const updateCart = (id, value) => {
     cartList.find((item) => item.id === id).count += value;
     setCartList([...cartList]);
     setCardCount((prevCount) => (prevCount += value));
   };
-
   const increaseCount = (id) => {
     updateCart(id, 1);
   };
   const decreaseCount = (id) => {
     updateCart(id, -1);
   };
-
+  const changeCount = (id, value) => {
+    cartList.find((item) => item.id === id).count = value;
+    setCartList([...cartList]);
+    setCardCount((prevCount) => (prevCount = value));
+  };
   const handleCartClick = () => {
-    setClickCount((prevCount) => prevCount + 1);
-    if (clickCount % 2 === 0) setShowCart(true);
-    else setShowCart(false);
+    setClickCartCount((prevCount) => prevCount + 1);
+    setShowCart(false);
+    setShowProfile(false);
+    console.log(clickCartCount)
+    clickCartCount % 2 === 1 && setShowCart(true);
+  };
+
+  const handleProfileClick = () => {
+    setClickProfileCount((prevCount) => prevCount + 1);
+    setShowProfile(false);
+    setShowCart(false);
+    console.log(clickProfileCount)
+    clickProfileCount % 2 === 1 && setShowProfile(true);
   };
 
   const deleteOrder = (productId) => {
@@ -127,7 +141,7 @@ function App() {
       1
     );
     setCartList([...cartList]);
-    setCardCount((prevCount) => (prevCount -1));
+    setCardCount((prevCount) => prevCount - 1);
   };
 
   return (
@@ -136,12 +150,15 @@ function App() {
         cartCount={cartCount}
         productList={productList}
         handleCartClick={handleCartClick}
+        handleProfileClick={handleProfileClick}
         showCart={showCart}
+        showProfile={showProfile}
         increaseCount={increaseCount}
         decreaseCount={decreaseCount}
         productCount={productCount}
         cartList={cartList}
         deleteOrder={deleteOrder}
+        changeCount={changeCount}
       ></Navbar>
       <div className="main">
         <Sidebar

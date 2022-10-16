@@ -1,12 +1,12 @@
 import React from "react";
 
-const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder }) => {
+const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder,changeCount }) => {
   let totalPrice = 0;
 
   for (const item of cartList) {
     totalPrice += parseFloat(item.price) * item.count;
   }
-  // console.log(totalPrice)
+
   return cartList.length > 0 ? (
     <div className="cart-list">
       <div className="products">
@@ -40,7 +40,7 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder }) => {
                 )}
 
                 {/* <input type="text" value={productCount} /> */}
-                <input  class="count-icon"type="text" value={product.count} defaultValue="1" />
+                <input class="count-icon"type="text" defaultValue={product.count} onChange={e=> changeCount(product.id, e.target.value)}/>
 
                 <i
                   class="fa-solid fa-plus count-icon"
