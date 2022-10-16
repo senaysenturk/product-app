@@ -27,9 +27,7 @@ const Navbar = ({
             <i className="fa-solid fa-user"></i>
             <h6>Login</h6>
           </a>
-          {
-        showProfile && (<Profile></Profile>)
-      }
+          {showProfile && <Profile></Profile>}
         </div>
         <div className="cart" onClick={handleCartClick}>
           <a className="align-items-row">
@@ -39,18 +37,16 @@ const Navbar = ({
           </a>
         </div>
         {showCart && (
-        <Cart
-          increaseCount={increaseCount}
-          decreaseCount={decreaseCount}
-          productCount={productCount}
-          deleteOrder={deleteOrder}
-          cartList={cartList}
-          changeCount={changeCount}
-        ></Cart>
-      )}
+          <Cart
+            increaseCount={increaseCount}
+            decreaseCount={decreaseCount}
+            productCount={productCount}
+            deleteOrder={deleteOrder}
+            cartList={cartList}
+            changeCount={changeCount}
+          ></Cart>
+        )}
       </div>
-      
-     
     </div>
   );
 };

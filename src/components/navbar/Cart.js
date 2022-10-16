@@ -29,21 +29,21 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder,changeCount 
               <div className="counter">
                 {product.count > 1 ? (
                   <i
-                    class="fa-solid fa-minus count-icon"
+                    className="fa-solid fa-minus count-icon"
                     onClick={(e) => decreaseCount(product.id)}
                   ></i>
                 ) : (
                   <i
-                    class="fa-solid fa-trash count-icon"
+                    className="fa-solid fa-trash count-icon"
                     onClick={(e) => deleteOrder(product.id)}
                   ></i>
                 )}
 
                 {/* <input type="text" value={productCount} /> */}
-                <input class="count-icon"type="text" defaultValue={product.count} onChange={e=> changeCount(product.id, e.target.value)}/>
+                <input className="count-icon"type="text" defaultValue={product.count} onChange={e=> changeCount(product.id, e.target.value)}/>
 
                 <i
-                  class="fa-solid fa-plus count-icon"
+                  className="fa-solid fa-plus count-icon"
                   onClick={(e) => {
                     increaseCount(product.id);
                   }}
@@ -67,7 +67,7 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder,changeCount 
   ) : (
     <div className="cart-list">
       <div className="empty-cart">
-        <i class="fa-solid fa-cart-plus"></i>
+        <i className="fa-solid fa-cart-plus"></i>
         <h3>Your cart is empty</h3>
         <p>
           To fill your cart from Nozama's world full of opportunities You can

@@ -88,9 +88,6 @@ function App() {
   const [showProfile, setShowProfile] = useState(false);
   const [cartList, setCartList] = useState([]);
   const [productCount, setProductCount] = useState(1);
-  const [clickProfileCount, setClickProfileCount] = useState(1);
-  const [clickCartCount, setClickCartCount] = useState(1);
-  const [clickCount, setClickCount] = useState(1);
 
   const updateCount = (itemId) => {
     cartList.find((item) => item.id === itemId).count += 1;
@@ -119,20 +116,14 @@ function App() {
     setCardCount((prevCount) => (prevCount = value));
   };
   const handleCartClick = () => {
-    setClickCartCount((prevCount) => prevCount + 1);
-    setShowCart(false);
-    setShowProfile(false);
-    console.log(clickCartCount)
-    clickCartCount % 2 === 1 && setShowCart(true);
+    setShowCart(prevShowCart => !prevShowCart)
+    showProfile && setShowProfile(prevShowCart => !prevShowCart);
   };
 
   const handleProfileClick = () => {
-    setClickProfileCount((prevCount) => prevCount + 1);
-    setShowProfile(false);
-    setShowCart(false);
-    console.log(clickProfileCount)
-    clickProfileCount % 2 === 1 && setShowProfile(true);
-  };
+    setShowProfile(prevShowCart => !prevShowCart);
+    showCart && setShowCart(prevShowCart => !prevShowCart);
+    };
 
   const deleteOrder = (productId) => {
     //console.log(cartList.findIndex((product) => product.id === productId));
