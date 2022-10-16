@@ -14,7 +14,7 @@ const ProductList = ({ products, addCart }) => {
         {products.map((product, index) => (
           <div className="card" key={index}>
             <div className="card-info">
-              <img src={product.img} width="42%" alt="" />
+              <img src={product.img} alt="" />
               <h5>{product.name}</h5>
               <h3>{product.price.toLocaleString("tr-TR", {
             minimumFractionDigits: 2,

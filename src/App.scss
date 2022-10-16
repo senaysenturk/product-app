@@ -232,11 +232,11 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 20px;
         padding: 0 10px;
         .card {
-          height: 58%;
-          width: 15%;
+          height: 250px;
+          width: 16%;
           box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
           border-radius: 10px;
           display: flex;
@@ -244,12 +244,18 @@
           align-items: center;
           position: relative;
           gap: 10px;
+          cursor: pointer;
           &:hover {
             transform: scale(1.05);
           }
           .card-info {
             h5 {
               padding-top: 5px;
+            }
+            img{
+              width: 50%;              
+              background-position: center;
+              background-size: cover;
             }
           }
           .add-cart {
