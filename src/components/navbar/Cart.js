@@ -40,7 +40,7 @@ const Cart = ({ increaseCount, decreaseCount, cartList, deleteOrder,changeCount 
                 )}
 
                 {/* <input type="text" value={productCount} /> */}
-                <input className="count-icon"type="text" defaultValue={product.count} onChange={e=> changeCount(product.id, e.target.value)}/>
+                <input className="count-icon"type="text" defaultValue={""} value={product.count} onChange={e=> changeCount(product.id, e.target.value)}/>
 
                 <i
                   className="fa-solid fa-plus count-icon"
