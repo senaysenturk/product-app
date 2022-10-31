@@ -8,8 +8,6 @@ import axios from "axios";
 
 function App() {
   const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
-  const products = [];
-
   const [productList, setProductList] = useState([]);
   const [cartCount, setCardCount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -17,7 +15,6 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [cartList, setCartList] = useState([]);
-  const [productCount, setProductCount] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -93,7 +90,6 @@ function App() {
         showProfile={showProfile}
         increaseCount={increaseCount}
         decreaseCount={decreaseCount}
-        productCount={productCount}
         cartList={cartList}
         deleteOrder={deleteOrder}
         changeCount={changeCount}

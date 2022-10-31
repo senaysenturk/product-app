@@ -40,7 +40,6 @@ const Navbar = ({
           <Cart
             increaseCount={increaseCount}
             decreaseCount={decreaseCount}
-            productCount={productCount}
             deleteOrder={deleteOrder}
             cartList={cartList}
             changeCount={changeCount}
