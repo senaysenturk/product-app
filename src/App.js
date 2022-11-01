@@ -5,7 +5,6 @@ import ProductList from "./components/product-list/ProductList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 function App() {
   const categories = ["All", "Woman", "Man", "Child", "Home", "Electronic"];
   const [productList, setProductList] = useState([]);

@@ -29,7 +29,6 @@ const ProductList = ({ productList, addCart, isLoading }) => {
                   TRY
                 </h3>
               </div>
-
               <div className="add-cart">
                 <a
                   className="add-cart-item"
