@@ -158,7 +158,6 @@ function App() {
           setSelectedCategory={setSelectedCategory}
           setSearchedProduct={setSearchedProduct}
         ></Sidebar>
-
         <ProductList
           products={products.filter((product) => {
             if (selectedCategory === "" && searchedProduct === "") {
