@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "json-server --watch --port 5500 --delay 1000 assets/data/data.json"
+    "api": "json-server --watch --port 5300 --host 192.168.1.6 --delay 1000 assets/data/data.json"
   },
   "eslintConfig": {
     "extends": [

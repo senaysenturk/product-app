@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = ({ products, addCart }) => {
+const ProductList = ({ productList, addCart, isLoading }) => {
   return (
     <div className="container">
       <div className="breadcrumb">
