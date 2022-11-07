@@ -41,9 +41,7 @@ const ProductList = ({ productList, addCart, isLoading }) => {
                       id: product.id,
                     })
                   }
-                >
-                  Add to Cart
-                </a>
+                >Add to Cart</a>
               </div>
             </div>
           ))
