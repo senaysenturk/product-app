@@ -33,7 +33,7 @@ const Navbar = ({
           <a className="align-items-row">
             <i className="fa-solid fa-cart-arrow-down"></i>
             <h6>My Cart</h6>
-            <span className="cart-count">{cartCount}</span>
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </a>
         </div>
         {showCart && (
